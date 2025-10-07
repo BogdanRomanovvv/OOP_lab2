@@ -12,10 +12,9 @@ cd D:\OOP_lab2
 
 ```powershell
 
-# создать папку сборки рядом с исходниками и сконфигурировать оттуда
 mkdir build
 cd build
-cmake ..                       # указывает, что исходники — в родительской папке (D:\OOP_lab2)
+cmake ..                       
 cmake --build . --config Release
 ```
 

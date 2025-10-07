@@ -1,4 +1,3 @@
-# Exclude build artifacts and VCS to keep image small
 build/
 build/**
 .git

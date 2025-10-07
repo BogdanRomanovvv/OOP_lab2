@@ -1,4 +1,4 @@
-# tests/CMakeLists.txt
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -13,6 +13,5 @@ target_include_directories(twelve_tests PRIVATE ${PROJECT_SOURCE_DIR}/include)
 include(GoogleTest)
 gtest_discover_tests(twelve_tests)
 
-# На некоторых конфигурациях gtest_discover_tests может не зарегистрировать тесты для ctest;
-# добавим простую явную привязку на всякий случай.
+
 add_test(NAME twelve_tests COMMAND twelve_tests)
