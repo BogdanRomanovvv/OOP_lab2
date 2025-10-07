@@ -1,0 +1,31 @@
+# Ignore build artifacts
+build/
+
+# CMake files
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+
+# Compiled object files
+*.o
+*.obj
+
+# Static / dynamic libraries
+*.a
+*.lib
+*.so
+*.dll
+
+# Executables
+*.exe
+bin/
+
+# Visual Studio
+.vs/
+
+# JetBrains
+.idea/
+
+# macOS
+.DS_Store

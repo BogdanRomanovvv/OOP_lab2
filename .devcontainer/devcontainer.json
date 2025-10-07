@@ -1,0 +1,22 @@
+{
+    "name": "OOP_lab2 Dev Container",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": ".."
+    },
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.shell.linux": "/bin/bash"
+            }
+        }
+    },
+    "postCreateCommand": "cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo || true",
+    "remoteUser": "root"
+}

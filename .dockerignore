@@ -1,0 +1,17 @@
+# Exclude build artifacts and VCS to keep image small
+build/
+build/**
+.git
+.git/**
+.vscode
+.idea
+*.o
+*.a
+*.so
+*.exe
+*.dll
+*.obj
+.DS_Store
+__pycache__
+.cache
+/.clangd
