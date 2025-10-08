@@ -96,4 +96,4 @@ docker build -t oop_lab2:latest .
 ```powershell
 docker run --rm -it -v "${pwd}:/workspace" -w /workspace oop_lab2:latest bash -lc "cmake -S . -B build && cmake --build build -- -j && ctest --test-dir build --output-on-failure"
 ```
-
+=)
