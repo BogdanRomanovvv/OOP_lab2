@@ -41,7 +41,7 @@ MyArray::MyArray(MyArray &&other) noexcept : size_(other.size_), data_(other.dat
     other.data_ = nullptr;
 }
 
-MyArray &MyArray::operator=(const MyArray &other)
+MyArray &MyArray::copyAssign(const MyArray &other)
 {
     if (this == &other)
         return *this;
@@ -59,7 +59,7 @@ MyArray &MyArray::operator=(const MyArray &other)
     return *this;
 }
 
-MyArray &MyArray::operator=(MyArray &&other) noexcept
+MyArray &MyArray::moveAssign(MyArray &&other) noexcept
 {
     if (this == &other)
         return *this;

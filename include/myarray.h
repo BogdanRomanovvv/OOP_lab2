@@ -19,10 +19,9 @@ public: // Открытая часть класса
     MyArray(const MyArray &other);
     // Правило пяти: перемещающий конструктор
     MyArray(MyArray &&other) noexcept;
-    // Правило пяти: копирующее присваивание
-    MyArray &operator=(const MyArray &other);
-    // Правило пяти: перемещающее присваивание
-    MyArray &operator=(MyArray &&other) noexcept;
+    // Явные методы присваивания
+    MyArray &copyAssign(const MyArray &other);     // копирующее присваивание
+    MyArray &moveAssign(MyArray &&other) noexcept; // перемещающее присваивание
 
     // Деструктор: освобождает память
     ~MyArray() noexcept;

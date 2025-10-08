@@ -28,9 +28,8 @@ public: // Открытая часть класса
     // Правило пяти: перемещающий конструктор
     Twelve(Twelve &&other) noexcept;
     // Правило пяти: копирующее присваивание
-    Twelve &operator=(const Twelve &other);
-    // Правило пяти: перемещающее присваивание
-    Twelve &operator=(Twelve &&other) noexcept;
+    Twelve &copyAssign(const Twelve &other);
+    Twelve &moveAssign(Twelve &&other) noexcept;
     // Виртуальный деструктор
     virtual ~Twelve() noexcept;
 

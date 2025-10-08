@@ -1,9 +1,8 @@
 #include "twelve.h"
 #include <cctype>
 #include <sstream>
-#include <cstring> // для memcpy
+#include <cstring>
 
-// ===== Вспомогательные функции: преобразование char<->digit =====
 unsigned char Twelve::charToDigit(char c)
 {
     if (c >= '0' && c <= '9')
@@ -49,7 +48,7 @@ Twelve::Twelve(const std::initializer_list<unsigned char> &digits)
     size_t n = digits.size();
     if (n == 0)
     {
-        digits_ = MyArray(1, 0);
+        digits_.moveAssign(MyArray(1, 0));
         return;
     }
     unsigned char *raw = new unsigned char[n];
@@ -63,7 +62,7 @@ Twelve::Twelve(const std::initializer_list<unsigned char> &digits)
         }
         raw[idx++] = d;
     }
-    digits_ = MyArray(raw, n);
+    digits_.moveAssign(MyArray(raw, n));
     delete[] raw;
     normalize();
 }
@@ -84,7 +83,7 @@ Twelve::Twelve(const std::string &digitsStr)
         // Младшую цифру берём с конца строки
         raw[i] = charToDigit(s[n - 1 - i]);
     }
-    digits_ = MyArray(raw, n);
+    digits_.moveAssign(MyArray(raw, n));
     delete[] raw;
     normalize();
 }
@@ -99,19 +98,19 @@ Twelve::Twelve(Twelve &&other) noexcept : digits_(std::move(other.digits_))
     // Перемещающий конструктор
 }
 
-Twelve &Twelve::operator=(const Twelve &other)
+Twelve &Twelve::copyAssign(const Twelve &other)
 {
     if (this == &other)
         return *this;
-    digits_ = other.digits_; // MyArray::operator= выполняет глубокое копирование
+    digits_.copyAssign(other.digits_);
     return *this;
 }
 
-Twelve &Twelve::operator=(Twelve &&other) noexcept
+Twelve &Twelve::moveAssign(Twelve &&other) noexcept
 {
     if (this == &other)
         return *this;
-    digits_ = std::move(other.digits_);
+    digits_.moveAssign(std::move(other.digits_));
     return *this;
 }
 
@@ -126,7 +125,7 @@ void Twelve::normalize()
     size_t sz = digits_.size();
     if (sz == 0)
     {
-        digits_ = MyArray(1, 0);
+        digits_.moveAssign(MyArray(1, 0));
         return;
     }
     // Находим индекс старшей ненулевой цифры
@@ -139,7 +138,7 @@ void Twelve::normalize()
         unsigned char *raw = new unsigned char[newSize];
         for (size_t i = 0; i < newSize; ++i)
             raw[i] = digits_.get(i);
-        digits_ = MyArray(raw, newSize);
+        digits_.moveAssign(MyArray(raw, newSize));
         delete[] raw;
     }
 }
